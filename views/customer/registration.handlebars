@@ -3,7 +3,7 @@
     <h2 class="display-3">{{title}}</h2> <!-- make in routes.js -->
 </div>
 
-<div class="card card-body">
+<div class="card card-body registration-card">
     <h1 class="page-header">Customer Registration</h1>
     <form action="/customer/registration"
           method="post"
@@ -11,54 +11,115 @@
 
         <!-- email -->
         <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email"
-                   class="form-control"
-                   name="email"
-                   value="{{email}}"
-                   required>
+            <div class="col-3">
+                <label for="email">Email</label>
+                <input type="email"
+                       class="form-control"
+                       name="email"
+                       value="{{email}}"
+                       required>
+            </div>
         </div>
 
         <!-- first name -->
         <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text"
-                   class="form-control"
-                   name="firstName"
-                   value="{{firstName}}"
-                   required>
+            <div class="col-3">
+                <label for="firstName">First Name</label>
+                <input type="text"
+                       class="form-control"
+                       name="firstName"
+                       required
+                       value="{{firstName}}"></div>
         </div>
 
         <!-- last name -->
         <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text"
-                   class="form-control"
-                   name="lastName"
-                   value="{{lastName}}"
-                   required>
+            <div class="col-3">
+                <label for="lastName">Last Name</label>
+                <input type="text"
+                       class="form-control"
+                       name="lastName"
+                       required
+                       value="{{lastName}}"></div>
+        </div>
+
+        <!-- street address 1 -->
+        <div class="form-group">
+            <div class="col-5">
+                <label for="address1">Street Address 1</label>
+                <input type="text"
+                       class="form-control"
+                       name="address1"
+                       required
+                       value="{{address1}}"></div>
+        </div>
+
+        <!-- street address 2 -->
+        <div class="form-group">
+            <div class="col-5">
+                <label for="address2">Street Address 2</label>
+                <input type="text"
+                       class="form-control"
+                       name="address2"
+                       required
+                       value="{{address2}}"></div>
+        </div>
+
+        <!-- city -->
+        <div class="form-group">
+            <div class="col-3">
+                <label for="city">City</label>
+                <input type="text"
+                       class="form-control"
+                       name="city"
+                       required
+                       value="{{city}}"></div>
+        </div>
+
+        <!-- country -->
+        <div class="form-group">
+            <div class="col-3">
+                <label for="country">Country</label>
+                <input type="text"
+                       class="form-control"
+                       name="country"
+                       required
+                       value="{{country}}"></div>
+        </div>
+
+        <!-- postal code -->
+        <div class="form-group">
+            <div class="col-2">
+                <label for="postalZip">Postal/Zip Code</label>
+                <input type="text"
+                       class="form-control"
+                       name="postalZip"
+                       required
+                       value="{{postalZip}}"></div>
         </div>
 
         <!-- password -->
         <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password"
-                   class="form-control"
-                   name="password"
-                   required>
+            <div class="col-3">
+                <label for="password">Password</label>
+                <input type="password"
+                       class="form-control"
+                       name="password"
+                       required></div>
         </div>
 
         <!-- confirm password -->
         <div class="form-group">
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password"
-                   class="form-control"
-                   name="confirmPassword"
-                   required>
+            <div class="col-3">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password"
+                       class="form-control"
+                       name="confirmPassword"
+                       required></div>
         </div>
 
         <button type="submit"
                 class="btn btn-primary"
-                id="btnSubmit">Submit</button>
+                id="btnRegister">Submit</button>
     </form>
 </div>

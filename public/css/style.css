@@ -9153,6 +9153,18 @@
     font-family: 'Quicksand', sans-serif;
   }
 
+  /* REGISTRATION PAGES */
+  .registration-card input, label {
+      margin-left: 40px;
+  }
+
+  #btnRegister, #btnSubscribeRegister {
+      background-color: var(--logo-red);
+      color: var(--off-white);
+      border: none;
+      margin-left: 55px;
+  }
+
   /* PROFILE PAGE */
 
   /* ORDER PAGES */
@@ -9246,9 +9258,9 @@
 }
 
 #btnCheckout {
-background-color: var(--logo-red);
-      color: var(--off-white);
-      border: none;
+    background-color: var(--logo-red);
+    color: var(--off-white);
+    border: none;
 }
 
 /* SPECIAL DELIVERY MODAL */
