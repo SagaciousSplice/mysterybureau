@@ -1,0 +1,46 @@
+<div class="jumbotron text-left"
+     id="login-title-jumbotron">
+    <h2 class="display-3">{{title}}</h2> <!-- make in routes.js -->
+</div>
+
+<!-- output server side errors -->
+{{#each errors}}
+<div class="alert alert-danger">{{text}}</div>
+{{else}}
+
+{{/each}}
+
+
+<div class="card card-body">
+    <h1 class="page-header">Please Login to Continue With Your Order</h1>
+    <form action="/subscribe/login"
+          method="post"
+          id="login-form">
+        <!-- email -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email"
+                   class="form-control"
+                   name="email"
+                   required>
+        </div>
+
+        <!-- password -->
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password"
+                   class="form-control"
+                   name="password"
+                   required>
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary"
+                id="btnSubmit">Submit</button>
+    </form>
+
+    <div class="container">
+        <p class="reg-body">Don't have an account yet? <a class="link"
+               href="/subscribe/registration">Click here to create one!</a></p>
+    </div>
+</div>

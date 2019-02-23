@@ -1,0 +1,65 @@
+<div class="jumbotron text-left"
+     id="about-title-jumbotron">
+    <h2 class="display-3">{{title}}</h2> <!-- make in routes.js -->
+</div> <!-- 2 curly braces renders variable passed to page from routes.js render -->
+
+<div class="container">
+
+    <h1 class="page-header">About the Mystery Bureau</h1>
+
+    <p class="reg-body">The mystery bureau is run by eager, and excited folks who love a good puzzle!</p>
+
+    <div class="container">
+
+        <form action="/about"
+              id="contact-form"
+              method="post"
+              role="form">
+
+            <div class="form-group">
+                <label for="inquiryEmail">Email address</label>
+                <input type="email"
+                       class="form-control"
+                       id="inquiryEmail"
+                       placeholder="name@example.com"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="inquiryName">Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="inquiryName"
+                       placeholder="Your Name"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="inquiryTopic">Inquiry Topic (select one)</label>
+                <select class="form-control"
+                        id="inquiryTopic">
+                    <option>Genery Inquiry</option>
+                    <option>General Order Inquiry</option>
+                    <option>Special Delivery Inquiry</option>
+                    <option>Mystery Suggestion/Feedback</option>
+                    <option>Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="inquiryText">How can we help you today?</label>
+                <textarea class="form-control"
+                          id="inquiryText"
+                          rows="3"
+                          placeholder="Write your question here"
+                          required></textarea>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary"
+                    id="btnSubmit">Submit</button>
+        </form>
+
+    </div>
+
+</div>

@@ -1,0 +1,34 @@
+<div class="jumbotron text-left"
+     id="mysteries-title-jumbotron">
+    <h2 class="display-3"
+        id="mysteries-title">{{title}}</h2> <!-- make in routes.js -->
+</div>
+
+<div class="container">
+    <h1 class="page-header">Our Current Mysteries</h1>
+    <p class="reg-body">Here are a posting of all our current mysteries. If you think you know an extrordinary kid
+        detective who could help us solve one of these cases, click on the Subscribe button.</p>
+
+    <br>
+
+    <h3 class="sub-heading egyptian">The Case of the Egyptian Archaeologist's Curse</h3>
+
+    <img src="../public/img/egypt.png"
+         alt="Small bust of an Egyptian pharaoh"
+         class="mystery-thumb float-left">
+
+    <p class="reg-body">Dr. Theodolphus Upton-Smythe's famed Egyptian treasure has been lost for over a century. The
+        Mystery Bureau needs help following the clues he left behind in his papers to uncover its secret location.
+        Unravel the meaning behind letters, codes, and maps, but avoid the mysterious curse some say has doomed the
+        treasure forever!</p>
+
+    <form action="/subscribe/egypt"
+          method="get"
+          id="egypt-descrip">
+
+        <button type="submit"
+                class="btn float-right btnSubscribe"
+                id="btnSubmit">Subscribe</button>
+
+    </form>
+</div>

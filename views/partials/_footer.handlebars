@@ -1,0 +1,71 @@
+<script>
+
+    $(document).ready(() => {
+        console.log('jQuery ready');
+
+        $('.nav-tabs a[href="#contactInfo]').tab('show');
+
+        //form that holds shipping address
+        let $shippingForm = document.getElementById('shippingForm');
+
+        $('#special').on('click', () => {
+            $($shippingForm).hide();
+        });
+
+        $('#normal').on('click', () => {
+            $($shippingForm).show();
+        });
+
+        let $shippingInfoPanel = document.getElementById('shippingInfo');
+
+        $('#btnBillingInfo').on('click', (e) => {
+            e.preventDefault();
+            console.log('here');
+            $('.nav-tabs a[href="#shippingInfo"]').tab('show');
+        });
+
+
+        /* MODAL BEHAVIOUR */
+        // Get the modal
+        var modal = document.getElementById('deliveryModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("delivery");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal 
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+<script src="/public/js/javascript.js"></script>
+</body>
+</html>

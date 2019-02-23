@@ -1,0 +1,83 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark ">
+    <a class="navbar-brand"
+       href="/"><img src="/public/img/logo200w.png"
+             alt="Mystery Bureau Logo"></a>
+    <button class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse"
+         id="navbarNav">
+        {{!-- right side of navbar --}}
+        <ul class="navbar-nav">
+            {{!-- home --}}
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="/">Home</a>
+            </li>
+            {{!-- mysteries --}}
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="/mysteries">Current Mysteries</a>
+            </li>
+            {{!-- about --}}
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="/about">About</a>
+            </li>
+        </ul>
+
+        {{!-- left side of nav bar --}}
+        <ul class="navbar-nav ml-auto">
+            {{#if user}}
+            {{#if (admin user) }}
+            {{!-- customer list page --}}
+            <li class="nav-item">
+                <a href="/admin/customers"
+                   class="nav-link">Customer List</a>
+            </li>
+            {{!-- profile page --}}
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="/customer/profile/:id">Profile</a>
+            </li>
+            {{!-- logout --}}
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="/customer/logout">Logout</a>
+            </li>
+            {{/if}}
+
+            {{#if (customer user) }}
+            {{!-- profile page --}}
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="/customer/profile/:id">Profile</a>
+            </li>
+            {{!-- logout --}}
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="/customer/logout">Logout</a>
+            </li>
+            {{/if}}
+
+            {{else}}
+            {{!-- login --}}
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="/login">Login</a>
+            </li>
+            {{!-- register --}}
+            <li class="nav-item">
+                <a href="/customer/registration"
+                   class="nav-link">Register</a>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+</nav>

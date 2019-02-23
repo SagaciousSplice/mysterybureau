@@ -1,0 +1,428 @@
+<div class="card card-body">
+
+    <div class="container">
+        <h1 class="page-header">Good Choice!</h1>
+        <p>You've chosen to send {{mystery.title}} to an intrepid kid detective!</p>
+
+        <div class="row">
+            <div class="col-8">
+                {{!-- <div class="float-left"> --}}
+
+                <ul class="nav nav-tabs">
+                    <li class="active orderTab"><a data-toggle="tab"
+                           href="#billingInfo">Billing Info</a></li>
+                    <li class="orderTab"><a data-toggle="tab"
+                           href="#shippingInfo">Shipping Info</a></li>
+                    <li class="orderTab"><a data-toggle="tab"
+                           href="#reviewOrder">Review Order</a></li>
+                </ul>
+
+                <div class="tab-content">
+
+                    <!-- START contact info panel -->
+                    <div id="billingInfo"
+                         class="tab-pane active">
+                        <p>Please review your information before proceeding with your order.</p>
+
+                        <form>
+
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email"
+                                       class="form-control"
+                                       name="email"
+                                       aria-describedby="emailHelp"
+                                       placeholder="email"
+                                       required>
+                                <small id="emailHelp"
+                                       class="form-text text-muted">We'll never share your email with anyone
+                                    else.</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="firstName"
+                                       placeholder="first name"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="lastName"
+                                       placeholder="last name"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address1">Address 1</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="address1"
+                                       placeholder="street address 1"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address 2">Address 2</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="address 2"
+                                       placeholder="street address 2">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="country"
+                                       placeholder="street country"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="city"
+                                       placeholder="street city"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postalZip">Region</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="region"
+                                       placeholder="province/state"
+                                       required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postalZip">Postal/Zip Code</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="postalZip"
+                                       placeholder="postal code/zip code"
+                                       required>
+                            </div>
+
+
+                            <button type="submit"
+                                    class="btn btn-primary"
+                                    id="btnBillingInfo">Next</button>
+                        </form>
+
+                    </div>
+                    <!-- END contact info panel -->
+
+                    <!-- START shipping info panel -->
+                    <div id="shippingInfo"
+                         class="tab-pane ">
+                        <p>Please review the shipping info. Remember, this is the address for the detective
+                            recieving
+                            the
+                            case.
+                            <b>If</b> you would prefer to deliver the clues yourself, select: <i>"No, I will track
+                                the
+                                detective's progress and send the mystery events
+                                myself at the right time!"</i> To learn more about this option, <button
+                                    id="delivery">click
+                                here</button>
+                            .
+                        </p>
+
+                        <!-- The Modal -->
+                        <div id="deliveryModal"
+                             class="modal">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <div class="container">
+                                    <h3>Thinking about delivering the mystery events yourself?</h3>
+                                    <br>
+
+
+                                    <p><b>You can!</b> It is important to us that all our customers have the option
+                                        of
+                                        keeping
+                                        the contact details of
+                                        the
+                                        recieving
+                                        kid
+                                        detective private. However, because our mystery events are only sent out
+                                        after
+                                        the
+                                        previous event has been
+                                        completed
+                                        online, it can be tricky to know when to give the detective their next set
+                                        of
+                                        clues.
+                                        For
+                                        that reason, we offer
+                                        three
+                                        delivery options. They are:</p>
+                                    <ol>
+                                        <li>We deliver them directly to the detective at the shipping address for
+                                            the
+                                            detective
+                                            that you provide.
+                                        </li>
+                                        <li>You opt have the events sent to your billing address and we ship each
+                                            one
+                                            when
+                                            it's
+                                            the right time so you
+                                            can
+                                            deliver
+                                            it to
+                                            your
+                                            kid detective in person.</li>
+                                        <li>We send all events to you at once and you keep track of the detective's
+                                            progress
+                                            and
+                                            deliver each event when
+                                            it's time.</li>
+                                    </ol>
+
+                                    <p>Just before you decide which option is for you, we wanted to remind you that:
+                                    </p>
+
+                                    <ul>
+                                        <li>including a last name for the detective is optional
+                                        <li>we will NEVER sell or use any personal data that you give us for any
+                                            other
+                                            reason
+                                            without your consent</li>
+                                        <li>all data we collect is kept secure</li>
+                                        </li>
+
+                                    </ul>
+
+                                    <p>Unfortunately, if events are
+                                        lost or damaged after they reach you, we cannot resend them. We can,
+                                        however,
+                                        offer
+                                        a
+                                        digital version.</p>
+
+                                    <p>If you still have any questions or concerns, please feel free to reach out to
+                                        us
+                                        through
+                                        our contact form on our
+                                        <a href="/about">About page</a> .</p>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <form>
+
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio"
+                                           id="normal"
+                                           class="form-check-input"
+                                           name="optradio"
+                                           checked>Yes, please handle shipping all the mystery's events at the right
+                                    time!
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio"
+                                           id="special"
+                                           class="form-check-input"
+                                           name="optradio">No, I will track the detective's progress and send the
+                                    mystery
+                                    events
+                                    myself at the right time!
+                                </label>
+                            </div>
+
+
+                        </form>
+                        <br>
+
+                        <form id="shippingForm">
+
+                            <div class="form-group">
+                                <label for="name">First Name</label>
+                                <input type="text"
+                                       class="form-control"
+                                       name="name"
+                                       placeholder="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="lastName"
+                                       placeholder="last name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address1">Address 1</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="address1"
+                                       placeholder="street address 1">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address 2">Address 2</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="address 2"
+                                       placeholder="street address 2">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="country"
+                                       placeholder="street country">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="city"
+                                       placeholder="street city">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postalZip">Region</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="region"
+                                       placeholder="province/state">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postalZip">Postal/Zip Code</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="postalZip"
+                                       placeholder="postal code/zip code">
+                            </div>
+
+
+                            <button type="submit"
+                                    class="btn btn-primary"
+                                    id="btnBillingInfo">Next</button>
+                        </form>
+                    </div>
+                    <!-- END shipping info panel -->
+
+                    <!-- START review order panel -->
+                    <div id="reviewOrder"
+                         class="tab-pane ">
+                        <h3>Review Order</h3>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                            laudantium,
+                            totam rem
+                            aperiam.</p>
+                    </div>
+                    <!-- END review order panel -->
+
+                    {{!-- </div><!-- float left --> --}}
+                </div><!-- col 8 -->
+            </div><!-- row -->
+
+
+            <div class="row">
+                <div class="col-4">
+                    {{!-- <div class="float-right"> --}}
+                    <!-- START side panels -->
+
+                    <div class="card mini-title"
+                         id="firstTitleCard"
+                         style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">The Mystery</h5>
+                        </div>
+                    </div>
+
+                    <div class="card mini-info"
+                         style="width: 18rem;">
+                        <div class="card-body">
+                            <p class="card-text">{{mystery.title}}
+                            </p>
+                            <a href="/mysteries"
+                               class="btn btnChangeOrder">Change Mystery</a>
+                        </div>
+                    </div>
+
+                    <div class="card mini-title"
+                         style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Billing Address</h5>
+                        </div>
+                    </div>
+
+                    <div class="card mini-info"
+                         style="width: 18rem;">
+                        <div class="card-body">
+                            <p class="card-text">{{mystery.title}}
+                            </p>
+                            <a href="#"
+                               class="btn btnChangeOrder">Update Billing Info</a>
+                        </div>
+                    </div>
+
+                    <div class="card mini-title"
+                         style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Shipping Address</h5>
+                        </div>
+                    </div>
+
+                    <div class="card mini-info"
+                         style="width: 18rem;">
+                        <div class="card-body">
+                            <p class="card-text">{{mystery.title}}
+                            </p>
+                            <a href="#"
+                               class="btn btnChangeOrder">Update Shipping Info</a>
+                        </div>
+                    </div>
+
+                    <div class="card mini-title"
+                         style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Order Total</h5>
+                        </div>
+                    </div>
+
+                    <div class="card mini-info"
+                         style="width: 18rem;">
+                        <div class="card-body">
+                            <p class="card-text">{{mystery.title}}
+                            </p>
+                            <a href="#"
+                               class="btn btnCheckout"
+                               id="btnCheckout">Checkout</a>
+                        </div>
+                    </div>
+
+
+                    <!-- END side panels -->
+
+                    {{!-- </div><!-- float-right --> --}}
+                </div><!-- col 4 -->
+            </div><!-- row -->
+
+
+        </div>
+    </div>

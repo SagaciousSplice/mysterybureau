@@ -1,0 +1,22 @@
+<!-- output server side errors -->
+{{#each errors}}
+<div class="alert alert-danger">{{text}}</div>
+{{else}}
+
+{{/each}}
+
+
+<h1>Profile page</h1>
+
+<div class="card card-body">
+    <h3>{{customer.firstName}} {{customer.lastName}}</h3>
+
+    <label for="name">{{customer.firstName}} {{customer.lastName}}</label>
+
+    <form action="/customer/edit/{{customer.id}}"
+          method="get">
+        <button type="submit"
+                class="btn btn-primary"
+                id="btnSubmit">Update Profile</button>
+    </form>
+</div>

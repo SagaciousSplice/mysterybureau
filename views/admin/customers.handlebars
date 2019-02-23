@@ -1,0 +1,17 @@
+{{#each customers}}
+<div class="card cardbody mb-2 ml-2">
+    <h3>{{firstName}} {{lastName}}</h3>
+    <h2>{{email}}</h2>
+    <h2>{{password}}</h2>
+    <a href="/customer/edit/{{id}}"
+       class="btn btn-dark btn-block mb-2">Edit Customer Details</a>
+    <form action="/customer/edit/{{id}}?_method=DELETE"
+          method="post">
+        <input type="submit"
+               class="btn btn-danger btn-block"
+               value="Delete">
+    </form>
+</div>
+{{else}}
+<p>No Customers Found</p>
+{{/each}}
