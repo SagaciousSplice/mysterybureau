@@ -33,7 +33,9 @@
     <title>Mystery Bureau</title>
 </head>
 <body>
+    {{#if (urlTest req.baseUrl)}}
     {{> _navbar}}
+    {{/if}}
     <!-- add a partial -->
 
     {{> _msg}}

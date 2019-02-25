@@ -123,6 +123,13 @@ module.exports = passport => {
         });
     });
 
+    // Logout User
+    router.get('/logout', ensureAuthenticated, (req, res) => {
+        req.logout();
+        req.flash('success_msg', 'You are now logged out');
+        res.redirect('/login');
+    });
+
     // Test Page
     // router.get('/getFake', (req, res) => {
     //     res.redirect('/subscribe/fake');

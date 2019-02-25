@@ -6,6 +6,7 @@ module.exports = (app, passport) => {
     app.use('/customer', require('./customer')(passport));
     app.use('/subscribe', require('./subscribe')(passport));
     app.use('/admin', require('./admin')(passport));
+    app.use('/detective', require('./detective')(passport));
 
     //Homepage
     app.get('/', (req, res) => {
@@ -58,6 +59,11 @@ module.exports = (app, passport) => {
             }
         }
     );
+
+    //Load Detective Login Page
+    app.get('/detectiveLogin', (req, res) => {
+        res.redirect('/detective/login');
+    });
 
     // Test Page
     app.get('/getFake', (req, res) => {

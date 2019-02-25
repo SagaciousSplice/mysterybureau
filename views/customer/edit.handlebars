@@ -1,44 +1,69 @@
 <!-- output server side errors -->
 {{#each errors}}
-    <div class="alert alert-danger">{{text}}</div>
+<div class="alert alert-danger">{{text}}</div>
 {{else}}
 
 {{/each}}
 
 <div class="card card-body">
     <h3>Edit Customer Details</h3>
-    <form action="/customer/edit/{{customer.id}}?_method=PUT" method="post">
-        <input type="hidden" name="_method" value="PUT">
+    <form action="/customer/edit/{{customer.id}}?_method=PUT"
+          method="post">
+        <input type="hidden"
+               name="_method"
+               value="PUT">
         <!-- email -->
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" value="{{customer.email}}" required>
+            <input type="email"
+                   class="form-control"
+                   name="email"
+                   required
+                   autofocus
+                   value="{{customer.email}}">
         </div>
 
         <!-- first name -->
         <div class="form-group">
             <label for="firstName">First Name</label>
-            <input type="text" class="form-control" name="firstName" value="{{customer.firstName}}" required>
+            <input type="text"
+                   class="form-control"
+                   name="firstName"
+                   value="{{customer.firstName}}"
+                   required>
         </div>
 
         <!-- last name -->
         <div class="form-group">
             <label for="lastName">Last Name</label>
-            <input type="text" class="form-control" name="lastName" value="{{customer.lastName}}" required>
+            <input type="text"
+                   class="form-control"
+                   name="lastName"
+                   value="{{customer.lastName}}"
+                   required>
         </div>
 
         <!-- password -->
         <div class="form-group">
             <label for="password">New Password</label>
-            <input type="password" class="form-control" name="password" value="" required>
+            <input type="password"
+                   class="form-control"
+                   name="password"
+                   value=""
+                   required>
         </div>
 
         <!-- confirm password -->
         <div class="form-group">
             <label for="confirmPassword">Confirm New Password</label>
-            <input type="password" class="form-control" name="confirmPassword" value="" required>
+            <input type="password"
+                   class="form-control"
+                   name="confirmPassword"
+                   value=""
+                   required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Edit</button>
+        <button type="submit"
+                class="btn btn-primary">Edit</button>
     </form>
 </div

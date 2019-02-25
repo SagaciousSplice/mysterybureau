@@ -15,6 +15,12 @@ function hbsHelpers(exphbs) {
                 } else {
                     return false;
                 }
+            },
+            urlTest: url => {
+                if (url === '/detective') {
+                    return false;
+                }
+                return true;
             }
         },
         defaultLayout: 'layout'
