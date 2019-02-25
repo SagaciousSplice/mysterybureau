@@ -108,7 +108,7 @@ module.exports = passport => {
                         console.log(customer);
 
                         customer.save().then(customer => {
-                            res.redirect('/customer/customers');
+                            res.redirect('customer/customers');
                         });
                     });
                 });
@@ -121,13 +121,6 @@ module.exports = passport => {
         Customer.deleteOne({ _id: req.params.id }).then(() => {
             res.redirect('/customer/customers');
         });
-    });
-
-    // Logout User
-    router.get('/logout', ensureAuthenticated, (req, res) => {
-        req.logout();
-        req.flash('success_msg', 'You are now logged out');
-        res.redirect('/login');
     });
 
     // Test Page

@@ -16,6 +16,7 @@ module.exports = passport => {
 
         Mystery.findOne({ name: 'egypt' }, (err, mystery) => {
             // console.log('mystery is: ' + mystery);
+            //put the mystery into the session to retrieve it in the order pages - breaking OOP
             req.session.mystery = mystery;
 
             if (err) throw err;
@@ -79,6 +80,40 @@ module.exports = passport => {
     //Load Special Delivery Instructions page
     router.get('/specialDelivery', ensureAuthenticated, (req, res) => {
         res.render('subscribe/specialDelivery');
+    });
+
+    //Update Customer Billing
+    router.put('/updateCustomer', ensureAuthenticated, (req, res) => {
+        let body = req.body;
+        console.log(body);
+        let email = req.body.email;
+        Customer.findOne({
+            email: email
+        }).then(customer => {
+            //new customer values
+            customer.email = body.email;
+            customer.firstName = body.firstName;
+            customer.lastName = body.lastName;
+            customer.address1 = body.address1;
+            customer.address2 = body.address2;
+            customer.city = body.city;
+            customer.provState = body.provState;
+            customer.country = body.country;
+            customer.postalZip = body.postalZip;
+
+            console.log(customer);
+
+            customer.save().then(customer => {
+                res.redirect('/subscribe/order');
+            });
+        });
+    });
+
+    // Logout User
+    router.get('/logout', ensureAuthenticated, (req, res) => {
+        req.logout();
+        req.flash('success_msg', 'You are now logged out');
+        res.redirect('/login');
     });
 
     //load the fake file

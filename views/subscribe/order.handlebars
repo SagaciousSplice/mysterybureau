@@ -24,9 +24,17 @@
                          class="tab-pane active">
                         <p>Please review your information before proceeding with your order.</p>
 
-                        <form>
 
-                            <div class="form-group">
+                        <form class="form-group"
+                              action="/subscribe/updateCustomer?_method=PUT"
+                              method="post">
+                            <input type="hidden"
+                                   name="_method"
+                                   value="PUT">
+                            {{!-- <input type="hidden"
+                                       name="_method"
+                                       value="PUT"> --}}
+                            <div>
                                 <label for="email">Email address</label>
                                 <input type="email"
                                        class="form-control"
@@ -103,7 +111,7 @@
                                 <label for="postalZip">Region</label>
                                 <input type="text"
                                        class="form-control"
-                                       name="region"
+                                       name="provState"
                                        placeholder="province/state"
                                        required
                                        value={{user.provState}}>
@@ -119,12 +127,20 @@
                                        value={{user.postalZip}}>
                             </div>
 
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit"
+                                            class="btn btn-primary float-left"
+                                            id="btnBillingInfo">Update</button>
 
-                            <button type="submit"
-                                    class="btn btn-primary"
-                                    id="btnBillingInfo">Next</button>
+
+                                    <button type="submit"
+                                            class="btn btn-next float-right"
+                                            id="btnBillingNext">Next</button>
+                                </div>
+                            </div>
+
                         </form>
-
                     </div>
                     <!-- END contact info panel -->
 
@@ -262,7 +278,7 @@
 
                         <form id="shippingForm">
 
-                            <div class="form-group">
+                            <div class="form-group shipping-form-group">
                                 <label for="name">First Name</label>
                                 <input type="text"
                                        class="form-control"
@@ -270,7 +286,7 @@
                                        placeholder="name">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group shipping-form-group">
                                 <label for="lastName">Last Name</label>
                                 <input type="text"
                                        class="form-control"
@@ -278,7 +294,7 @@
                                        placeholder="last name">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group shipping-form-group">
                                 <label for="address1">Address 1</label>
                                 <input type="text"
                                        class="form-control"
@@ -286,7 +302,7 @@
                                        placeholder="street address 1">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group shipping-form-group">
                                 <label for="address 2">Address 2</label>
                                 <input type="text"
                                        class="form-control"
@@ -294,7 +310,7 @@
                                        placeholder="street address 2">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group shipping-form-group">
                                 <label for="country">Country</label>
                                 <input type="text"
                                        class="form-control"
@@ -302,7 +318,7 @@
                                        placeholder="street country">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group shipping-form-group">
                                 <label for="city">City</label>
                                 <input type="text"
                                        class="form-control"
@@ -310,7 +326,7 @@
                                        placeholder="street city">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group shipping-form-group">
                                 <label for="postalZip">Region</label>
                                 <input type="text"
                                        class="form-control"
@@ -318,7 +334,7 @@
                                        placeholder="province/state">
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group shipping-form-group">
                                 <label for="postalZip">Postal/Zip Code</label>
                                 <input type="text"
                                        class="form-control"
@@ -326,11 +342,23 @@
                                        placeholder="postal code/zip code">
                             </div>
 
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="submit"
+                                            class="btn btn-primary float-left"
+                                            id="btnShippingInfo">Update</button>
 
-                            <button type="submit"
-                                    class="btn btn-primary"
-                                    id="btnBillingInfo">Next</button>
+
+                                    <button type="submit"
+                                            class="btn btn-next float-right"
+                                            id="btnShippingNext">Next</button>
+                                </div>
+                            </div>
+
+
                         </form>
+
+
                     </div>
                     <!-- END shipping info panel -->
 
@@ -385,21 +413,19 @@
                         <div class="card-body">
                             <p class="card-text">
                                 {{user.firstName}} {{user.lastName}}
-                            </p>
-                            <p class="card-text">
+                                <br>
                                 {{user.address1}}
-                            </p>
-                            <p class="card-text">
+                                <br>
+                                {{#if user.address2}}
                                 {{user.address2}}
-                            </p>
-                            <p class="card-text">
-                                {{user.city}}, {{user.country}}
-                            </p>
-                            <p class="card-text">
+                                <br>
+                                {{/if}}
+                                {{user.city}}, {{user.provState}}
+                                <br>
+                                {{user.country}}
+                                <br>
                                 {{user.postalZip}}
                             </p>
-                            <a href="#"
-                               class="btn btnChangeOrder">Update Billing Info</a>
                         </div>
                     </div>
 
@@ -415,8 +441,6 @@
                         <div class="card-body">
                             <p class="card-text">{{mystery.title}}
                             </p>
-                            <a href="#"
-                               class="btn btnChangeOrder">Update Shipping Info</a>
                         </div>
                     </div>
 

@@ -11,32 +11,37 @@
 {{/each}}
 
 
-<div class="card card-body">
+<div class="card card-body registration-card">
     <h1 class="page-header">Please Login to Continue With Your Order</h1>
     <form action="/subscribe/login"
           method="post"
           id="login-form">
+
         <!-- email -->
         <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email"
-                   class="form-control"
-                   name="email"
-                   required>
+            <div class="col-3">
+                <label for="email">Email</label>
+                <input type="email"
+                       class="form-control"
+                       name="email"
+                       required>
+            </div>
         </div>
 
         <!-- password -->
         <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password"
-                   class="form-control"
-                   name="password"
-                   required>
+            <div class="col-3">
+                <label for="password">Password</label>
+                <input type="password"
+                       class="form-control"
+                       name="password"
+                       required>
+            </div>
         </div>
 
         <button type="submit"
                 class="btn btn-primary"
-                id="btnSubmit">Submit</button>
+                id="btnLogin">Submit</button>
     </form>
 
     <div class="container">

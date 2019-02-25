@@ -9158,7 +9158,7 @@
       margin-left: 40px;
   }
 
-  #btnRegister, #btnSubscribeRegister {
+  #btnRegister, #btnSubscribeRegister, #btnLogin {
       background-color: var(--logo-red);
       color: var(--off-white);
       border: none;
@@ -9173,6 +9173,19 @@
       background-color: var(--logo-red);
       color: var(--off-white);
       border: none;
+  }
+ 
+  #btnShippingInfo {
+      background-color: var(--logo-red);
+      color: var(--off-white);
+      border: none;
+  }
+
+  .btn-next {
+      background-color: var(--logo-red);
+      color: var(--off-white);
+      border: none;
+      /* margin-top: 10px; */
   }
 
   .nav-tabs {

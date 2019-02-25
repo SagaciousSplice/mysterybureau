@@ -44,6 +44,13 @@ module.exports = function(passport) {
             function(req, email, password, done) {
                 let firstName = req.body.firstName;
                 let lastName = req.body.lastName;
+                let address1 = req.body.address1;
+                let address2 = req.body.address2;
+                let city = req.body.city;
+                let provState = req.body.provState;
+                let country = req.body.country;
+                let postalZip = req.body.postalZip;
+
                 // asynchronous
                 // Customer.findOne wont fire unless data is sent back
                 process.nextTick(() => {
@@ -74,6 +81,12 @@ module.exports = function(passport) {
                             );
                             newCustomer.firstName = firstName;
                             newCustomer.lastName = lastName;
+                            newCustomer.address1 = address1;
+                            newCustomer.address2 = address2;
+                            newCustomer.city = city;
+                            newCustomer.provState = provState;
+                            newCustomer.country = country;
+                            newCustomer.postalZip = postalZip;
                             // save the customer
                             newCustomer.save(function(err) {
                                 if (err) throw err;

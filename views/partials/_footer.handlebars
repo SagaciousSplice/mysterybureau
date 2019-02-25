@@ -7,21 +7,32 @@
 
         //form that holds shipping address
         let $shippingForm = document.getElementById('shippingForm');
+        let $shippingFormDivs = document.getElementsByClassName(' shipping-form-group');
+        let $shippingUpdateBtn = document.getElementById('btnShippingInfo');
 
         $('#special').on('click', () => {
-            $($shippingForm).hide();
+            $($shippingFormDivs).hide();
+            $($shippingUpdateBtn).hide();
         });
 
         $('#normal').on('click', () => {
-            $($shippingForm).show();
+            $($shippingFormDivs).show();
+            $($shippingUpdateBtn).show();
         });
 
         let $shippingInfoPanel = document.getElementById('shippingInfo');
 
-        $('#btnBillingInfo').on('click', (e) => {
+        $('#btnBillingNext').on('click', (e) => {
             e.preventDefault();
             console.log('here');
             $('.nav-tabs a[href="#shippingInfo"]').tab('show');
+            window.scrollTo(0, 0);
+        });
+
+        $('#btnShippingNext').on('click', (e) => {
+            e.preventDefault();
+            $('.nav-tabs a[href="#reviewOrder"]').tab('show');
+            window.scrollTo(0, 0);
         });
 
 
