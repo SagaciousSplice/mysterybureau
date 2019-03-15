@@ -1,6 +1,8 @@
 module.exports = (app, passport) => {
     // //Load routes
     //const customer = require('./customer');
+    let Haikunator = require('haikunator');
+    let generatePassword = require('password-generator');
 
     //use routes
     app.use('/customer', require('./customer')(passport));
@@ -68,6 +70,16 @@ module.exports = (app, passport) => {
     // Test Page
     app.get('/getFake', (req, res) => {
         res.redirect('/subscribe/fake');
+    });
+
+    //Random Word API Test Page
+    app.get('/random', (req, res) => {
+        //get words
+        let haikunator = new Haikunator();
+        let haiku = haikunator.haikunate({ tokenLength: 0, delimiter: ' ' });
+        let password = generatePassword();
+
+        res.render('random', { haiku, password });
     });
 
     // app.post(

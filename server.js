@@ -16,6 +16,8 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const favicon = require('serve-favicon');
 const path = require('path');
+const haikunator = require('haikunator');
+const generatePassword = require('password-generator');
 
 //create the app
 const app = express();
@@ -37,7 +39,7 @@ var conn = mongoose.connection;
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 

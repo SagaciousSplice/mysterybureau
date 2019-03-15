@@ -7,11 +7,13 @@ const bcrypt = require('bcryptjs');
 let OrderSchema = new mongoose.Schema({
     mystery: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Mystery'
+        ref: 'Mystery',
+        required: true
     },
     customer: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Customer'
+        ref: 'Customer',
+        required: true
     },
     isSpecialDelivery: {
         type: Boolean,
@@ -59,22 +61,29 @@ let OrderSchema = new mongoose.Schema({
     userType: {
         type: String,
         default: 'detective'
+    },
+    secretName: {
+        type: String,
+        default: 'No Code Name Applied',
+        required: true
+    },
+    secretCode: {
+        type: String,
+        default: 'No Secret Code Created',
+        required: true
+    },
+    orderComplete: {
+        type: Boolean,
+        default: false
     }
     //going to need to add a lot of data here
 });
 
-// methods ======================
-// generating a hash
-OrderSchema.methods.generateHash = password => {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
-};
-
 // checking if password is valid
-OrderSchema.methods.validPassword = (customer, password) => {
-    // console.log('this: ' + this);
-    // console.log('passed password: ' + password);
-    // console.log('local password: ' + customer.password);
-    return bcrypt.compareSync(password, customer.password);
+OrderSchema.methods.validSecretCode = (order, secretName, secretCode) => {
+    console.log('passed secretCode: ' + secretCode);
+    console.log('local secretCode: ' + order.secretCode);
+    return secretCode === order.secretCode && secretName === order.secretName;
 };
 
-module.exports = mongoose.model('Customer', OrderSchema);
+module.exports = mongoose.model('Order', OrderSchema);

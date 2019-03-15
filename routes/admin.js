@@ -23,6 +23,12 @@ module.exports = passport => {
     router.post('/addMystery', ensureAuthenticated, isAdmin, (req, res) => {
         let title = req.body.title;
         let name = req.body.name;
+        let event1 = req.body.event1;
+        let event2 = req.body.event2;
+        let event3 = req.body.event3;
+        let event4 = req.body.event4;
+        let event5 = req.body.event5;
+        let event6 = req.body.event6;
 
         Mystery.findOne({ title: title }, (err, title) => {
             if (err) return err;
@@ -44,6 +50,12 @@ module.exports = passport => {
                         let newMystery = new Mystery();
                         newMystery.title = req.body.title;
                         newMystery.name = req.body.name;
+                        newMystery.event1 = req.body.event1;
+                        newMystery.event2 = req.body.event2;
+                        newMystery.event3 = req.body.event3;
+                        newMystery.event4 = req.body.event4;
+                        newMystery.event5 = req.body.event5;
+                        newMystery.event6 = req.body.event6;
                         newMystery
                             .save()
                             .then(mystery => {

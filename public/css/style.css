@@ -9052,7 +9052,6 @@
       padding-bottom: 50px;
       color: var(--off-white);
   }
-
   .navbar {
       background-color: var(--dark-charcoal);
   }
@@ -9063,6 +9062,10 @@
 
   .navbarNav a.active {
     background-color: var(--lt-grey);
+}
+
+.nav-item {
+    font-size: 150%;
 }
 
 .jumbotron {
@@ -9091,6 +9094,7 @@
 
   .reg-body {
     font-family: 'Quicksand', sans-serif;
+    font-size: 150%;
     margin-top: 10px;
     margin-left: 40px;
     color: var(--off-white);
@@ -9103,6 +9107,7 @@
   .link:hover {
       color: var(--logo-red);
   } 
+
 
   /* INDEX PAGE */
   #index-title-jumbotron {
@@ -9314,6 +9319,14 @@
   cursor: pointer;
 }
 
+/* .borderless tr, .borderless td {
+    border: none;
+} */
+
+.totalLine {
+    border-top: 1px;
+}
+
 /* ADMIN DASHBOARD PAGE */
   #dashboard-title-jumbotron {
     background-image: url("../img/books-door-sm.jpg");
@@ -9321,7 +9334,10 @@
   }
 
 
-  /* DETECTIVE LOGING PAGE */
+  /* DETECTIVE LOGIN PAGE */
+  .loader {
+      text-size: 20px;
+  }
   
   /* source: https://codepen.io/chrisnager/pen/yfwgE */
   @keyframes blink {50% { color: transparent }}
@@ -9332,6 +9348,25 @@
 #detectiveLoginLogo {
     max-width: 100%;
     height: auto;
+}
+
+#login-form {
+    font-family: 'Quicksand', sans-serif;
+}
+
+#login-form .form-group {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+/* DETECTIVE DASHBOARD PAGE */
+#detect-dash-title-jumbotron {
+    background-image: url("../img/mysteryTypeLetters.jpg");
+    background-size: cover;
+}
+
+.body-title{
+    font-size: 300%;
 }
 
   

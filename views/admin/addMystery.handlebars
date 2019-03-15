@@ -1,24 +1,193 @@
 <form action="/admin/addMystery"
       method="post">
 
+    <!-- mystery title -->
     <div class="form-group">
         <label for="title">Mystery Title</label>
         <input type="text"
                class="form-control"
                name="title"
                placeholder="Title of Mystery"
-               required>
+               required
+               autofocus>
     </div>
 
-    <!-- first name -->
+    <!-- mystery name -->
     <div class="form-group">
-        <label for="firstName">Reference name</label>
+        <label for="name">Reference name</label>
         <input type="text"
                class="form-control"
                name="name"
                required
-               autofocus
                placeholder="Short Name for Reference">
+    </div>
+
+    {{!-- Eventually needs to be done dynamically --}}
+    <div class="card">
+        <div class="card-body">
+
+            <!-- mystery event 1 -->
+
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="event1">Event 1 Name</label>
+                    <input type="text"
+                           class="form-control"
+                           name="event1"
+                           required>
+                </div>
+
+                <div class="form-group col-3">
+                    <label for="eventNumber1">Event Ordinal</label>
+                    <input type="text"
+                           class="form-control"
+                           name="eventNumber1"
+                           required>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-6">
+                    <label for="clue1item1">Event 1, Clue 1: Item 1</label>
+                    <input type="text"
+                           class="form-control"
+                           name="clue1item1"
+                           required>
+                </div>
+
+                <div class="form-group col-6">
+                    <label for="clue1item2">Event 1, Clue 1: Item 2</label>
+                    <input type="text"
+                           class="form-control"
+                           name="clue1item2"
+                           required>
+                </div>
+
+                <div class="form-group col-6">
+                    <label for="clue1item3">Event 1, Clue 1: Item 3</label>
+                    <input type="text"
+                           class="form-control"
+                           name="clue1item3"
+                           required>
+                </div>
+            </div>
+
+
+            <!-- mystery event 2 -->
+            <div class="row">
+
+                <div class="form-group col-6">
+                    <label for="event2">Event 2 Name</label>
+                    <input type="text"
+                           class="form-control"
+                           name="event2"
+                           required>
+                </div>
+
+                <div class="form-group col-3
+        ">
+                    <label for="eventNumber2">Event Ordinal</label>
+                    <input type="text"
+                           class="form-control"
+                           name="eventNumber2"
+                           required>
+                </div>
+
+            </div>
+
+
+            <!-- mystery event 3 -->
+            <div class="row">
+
+                <div class="form-group col-6">
+                    <label for="event3">Event 3 Name</label>
+                    <input type="text"
+                           class="form-control"
+                           name="event3"
+                           required>
+                </div>
+
+                <div class="form-group col-3
+        ">
+                    <label for="eventNumber3">Event Ordinal</label>
+                    <input type="text"
+                           class="form-control"
+                           name="eventNumber3"
+                           required>
+                </div>
+
+            </div>
+
+
+            <!-- mystery event 4 -->
+            <div class="row">
+
+                <div class="form-group col-6">
+                    <label for="event4">Event 4 Name</label>
+                    <input type="text"
+                           class="form-control"
+                           name="event4"
+                           required>
+                </div>
+
+                <div class="form-group col-3
+        ">
+                    <label for="eventNumber4">Event Ordinal</label>
+                    <input type="text"
+                           class="form-control"
+                           name="eventNumber4"
+                           required>
+                </div>
+
+            </div>
+
+
+            <!-- mystery event 5 -->
+            <div class="row">
+
+                <div class="form-group col-6">
+                    <label for="event5">Event 5 Name</label>
+                    <input type="text"
+                           class="form-control"
+                           name="event5"
+                           required>
+                </div>
+
+                <div class="form-group col-3
+        ">
+                    <label for="eventNumber5">Event Ordinal</label>
+                    <input type="text"
+                           class="form-control"
+                           name="eventNumber5"
+                           required>
+                </div>
+
+            </div>
+
+
+            <!-- mystery event 6 -->
+            <div class="row">
+
+                <div class="form-group col-6">
+                    <label for="event6">Event 6 Name</label>
+                    <input type="text"
+                           class="form-control"
+                           name="event6"
+                           required>
+                </div>
+
+                <div class="form-group col-3
+        ">
+                    <label for="eventNumber6">Event Ordinal</label>
+                    <input type="text"
+                           class="form-control"
+                           name="eventNumber6"
+                           required>
+                </div>
+
+            </div>
+
+        </div>
     </div>
 
 

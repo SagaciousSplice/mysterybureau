@@ -21,6 +21,15 @@ function hbsHelpers(exphbs) {
                     return false;
                 }
                 return true;
+            },
+            detective: user => {
+                if (user) {
+                    console.log('in handlbars helper');
+                    console.log(user);
+                    return true;
+                } else {
+                    return false;
+                }
             }
         },
         defaultLayout: 'layout'

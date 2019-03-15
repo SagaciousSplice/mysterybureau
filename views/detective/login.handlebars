@@ -1,9 +1,9 @@
 {{!-- source: https://codepen.io/chrisnager/pen/yfwgE --}}
 <div class="loader">
-    Detective Login Page
-    <span class="loader__dot">.</span>
-    <span class="loader__dot">.</span>
-    <spanclass="loader__dot">.</span>
+    <h4>Detective Login Page
+        <span class="loader__dot">.</span>
+        <span class="loader__dot">.</span>
+        <span class="loader__dot">.</span></h4>
 </div>
 
 <img src="/public/img/MBLogo.png"
@@ -11,3 +11,50 @@
      id="detectiveLoginLogo"
      class="img-fluid mx-auto d-block"
      alt="Responsive image">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="card card-body registration-card">
+    <h1 class="page-header">Detective Login</h1>
+    <form action="/detective/login"
+          method="post"
+          id="login-form">
+
+        <!-- email -->
+
+        <div class="row">
+            <div class="form-group">
+                <div>
+                    <label for="secretName">Enter Your Secret Name:</label>
+                    <input type="secretName"
+                           class="form-control"
+                           name="secretName"
+                           autofocus
+                           required>
+                </div>
+
+
+                <!-- password -->
+                <div class="form-group">
+                    <div>
+                        <label for="secretCode">Enter Your Secret Code:</label>
+                        <input type="secretCode"
+                               class="form-control"
+                               name="secretCode"
+                               required>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <button type="submit"
+                class="btn btn-primary"
+                id="btnLogin">Submit</button>
+    </form>

@@ -16,5 +16,13 @@ module.exports = {
         req.flash('error_msg', 'Not authorized admin');
         console.log(user);
         res.redirect('/');
+    },
+    isDetective: (req, res, next) => {
+        if (req.session.orderDetails) {
+            return next();
+        }
+        req.flash('error_msg', 'Not an authorized detective');
+        console.log('detective failed login');
+        res.redirect('/detective/login');
     }
 };

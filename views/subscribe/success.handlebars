@@ -1,0 +1,111 @@
+<div class="card card-body">
+
+    <div class="container">
+        <h1 class="page-header">Thank You!</h1>
+        <p>You've are sending {{mystery.title}} to an intrepid kid detective!</p>
+
+        <div class="row">
+            <div class="col-8">
+                {{!-- <div class="float-left"> --}}
+
+                <p>Your order is complete. You can review your orders in your account.</p>
+                <p>{{shippingMsg}}</p>
+                {{!-- </div><!-- float left --> --}}
+            </div><!-- col 8 -->
+        </div><!-- row -->
+
+
+        <div class="row">
+            <div class="col-4">
+                {{!-- <div class="float-right"> --}}
+                <!-- START side panels -->
+
+                <div class="card mini-title"
+                     id="firstTitleCard"
+                     style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">The Mystery</h5>
+                    </div>
+                </div>
+
+                <div class="card mini-info"
+                     style="width: 18rem;">
+                    <div class="card-body">
+                        <p class="card-text">{{mystery.title}}
+                        </p>
+                        <a href="/mysteries"
+                           class="btn btnChangeOrder">Change Mystery</a>
+                    </div>
+                </div>
+
+                <div class="card mini-title"
+                     style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Billing Address</h5>
+                    </div>
+                </div>
+
+                <div class="card mini-info"
+                     style="width: 18rem;">
+                    <div class="card-body">
+                        <p class="card-text">
+                            {{user.firstName}} {{user.lastName}}
+                            <br>
+                            {{user.address1}}
+                            <br>
+                            {{#if user.address2}}
+                            {{user.address2}}
+                            <br>
+                            {{/if}}
+                            {{user.city}}, {{user.provState}}
+                            <br>
+                            {{user.country}}
+                            <br>
+                            {{user.postalZip}}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card mini-title"
+                     style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Shipping Address</h5>
+                    </div>
+                </div>
+
+                <div class="card mini-info"
+                     style="width: 18rem;">
+                    <div class="card-body">
+                        <p class="card-text">{{mystery.title}}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card mini-title"
+                     style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Order Total</h5>
+                    </div>
+                </div>
+
+                <div class="card mini-info"
+                     style="width: 18rem;">
+                    <div class="card-body">
+                        <p class="card-text">{{mystery.title}}
+                        </p>
+                        <a href="#"
+                           class="btn btnCheckout"
+                           id="btnCheckout">Checkout</a>
+                    </div>
+                </div>
+
+
+                <!-- END side panels -->
+
+                {{!-- </div><!-- float-right --> --}}
+            </div><!-- col 4 -->
+        </div><!-- row -->
+
+
+    </div>
+</div>

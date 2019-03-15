@@ -246,14 +246,14 @@
                         </div>
 
 
-                        <form>
-
+                        {{!-- <form>
                             <div class="form-check">
                                 <label class="form-check-label">
                                     <input type="radio"
                                            id="normal"
                                            class="form-check-input"
                                            name="optradio"
+                                           value="0"
                                            checked>Yes, please handle shipping all the mystery's events at the right
                                     time!
                                 </label>
@@ -263,7 +263,8 @@
                                     <input type="radio"
                                            id="special"
                                            class="form-check-input"
-                                           name="optradio">No, I will track the detective's progress and send the
+                                           name="optradio"
+                                           value="1">No, I will track the detective's progress and send the
                                     mystery
                                     events
                                     myself at the right time!
@@ -271,10 +272,39 @@
                             </div>
 
 
-                        </form>
+                        </form> --}}
                         <br>
 
-                        <form id="shippingForm">
+                        <form class="form-group"
+                              action="/subscribe/updateShipping?_method=PUT"
+                              method="post">
+                            <input type="hidden"
+                                   name="_method"
+                                   value="PUT">
+
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio"
+                                           id="normal"
+                                           class="form-check-input"
+                                           name="optradio"
+                                           value="0"
+                                           checked>Yes, please handle shipping all the mystery's events at the right
+                                    time!
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio"
+                                           id="special"
+                                           class="form-check-input"
+                                           name="optradio"
+                                           value="1">No, I will track the detective's progress and send the
+                                    mystery
+                                    events
+                                    myself at the right time!
+                                </label>
+                            </div>
 
                             <div class="form-group shipping-form-group">
                                 <label for="name">First Name</label>
@@ -366,10 +396,39 @@
                     <div id="reviewOrder"
                          class="tab-pane ">
                         <h3>Review Order</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                            laudantium,
-                            totam rem
-                            aperiam.</p>
+                        <p>Reveiw your order and click the PayPal button to complete the transaction.</p>
+                        <br />
+                        <table class="table table-borderless">
+                            <tr>
+                                <td class="text-right ">{{mystery.title}}</td>
+                                <td class="text-right ">{{mystery.price}}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right ">Tax(HST)</td>
+                                <td class="text-right ">{{mystery.tax}}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">Total</td>
+                                <td class="text-right table-danger">{{total}}</td>
+                            </tr>
+                        </table>
+                        <hr>
+
+                        <form class="form-group"
+                              action="/subscribe/createOrder?_method=PUT"
+                              method="post">
+                            <input type="hidden"
+                                   name="_method"
+                                   value="PUT">
+                            <div class="row">
+                                <div class="col-12">
+
+
+                                    <button type="submit"
+                                            class="btn btn-next float-right"
+                                            id="btnShippingNext">Next</button>
+                                </div>
+                        </form>
                     </div>
                     <!-- END review order panel -->
 
@@ -454,6 +513,9 @@
                     <div class="card mini-info"
                          style="width: 18rem;">
                         <div class="card-body">
+                            <p class="card-text">{{newOrder.id}}</p>
+                            <p class="card-text">{{newOrder.secretName}}</p>
+                            <p class="card-text">{{newOrder.secretCode}}</p>
                             <p class="card-text">{{mystery.title}}
                             </p>
                             <a href="#"

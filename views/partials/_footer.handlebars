@@ -10,6 +10,7 @@
         let $shippingFormDivs = document.getElementsByClassName(' shipping-form-group');
         let $shippingUpdateBtn = document.getElementById('btnShippingInfo');
 
+        //toggle function to show or hide the shipping info for for special deliveries
         $('#special').on('click', () => {
             $($shippingFormDivs).hide();
             $($shippingUpdateBtn).hide();
@@ -22,9 +23,14 @@
 
         let $shippingInfoPanel = document.getElementById('shippingInfo');
 
+        //buttons to navigate to the next panel and also updating the data
+        $('#reviewOrder').on('click', (e) => {
+            document.getElementbyid('btnBillingNext').click();
+
+        });
+
         $('#btnBillingNext').on('click', (e) => {
             e.preventDefault();
-            console.log('here');
             $('.nav-tabs a[href="#shippingInfo"]').tab('show');
             window.scrollTo(0, 0);
         });
@@ -34,6 +40,19 @@
             $('.nav-tabs a[href="#reviewOrder"]').tab('show');
             window.scrollTo(0, 0);
         });
+
+        //function createEventDiv = () => {
+        //    let $eventDivParent = document.createElement('div');
+        //    $eventDivParent.addClass('form-group');
+
+        //    let $eventLable = document.createElement('label');
+        //    $lable.attr('for', 
+        //}
+
+        /* DYNAMICALLY GET NEW DIV FOR NEW MYSTERY EVENT */
+        //$('#btnNewMystery').on('click', (e) => {
+        //    createEventDiv();
+        //});
 
 
         /* MODAL BEHAVIOUR */

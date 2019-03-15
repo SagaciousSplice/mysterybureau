@@ -20,7 +20,7 @@ module.exports = passport => {
     router.get('/profile/:id', ensureAuthenticated, (req, res) => {
         Customer.findOne({ email: req.user.email }, (err, customer) => {
             if (err) return res.json(err);
-            console.log({ customer });
+            // console.log({ customer });
             res.render('customer/profile', {
                 customer
             });
