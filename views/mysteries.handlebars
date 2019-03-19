@@ -11,7 +11,27 @@
 
     <br>
 
-    <h3 class="sub-heading egyptian">The Case of the Egyptian Archaeologist's Curse</h3>
+    {{#each mysteries}}
+    <h3 class="sub-heading mystery-title">{{this.title}}</h3>
+    <img src="{{this.image}}"
+         alt="{{this.imageAlt}}"
+         class="mystery-thumb float-left">
+    <p class="reg-body">{{this.description}}</p>
+    <form action="{{this.subscriptionURL}}"
+          method="get"
+          id="{{this.subscriptionID}}">
+        <button type="submit"
+                class="btn submit float-right btnSubscribe"
+                id="btnSubmit">
+            Subscribe
+        </button>
+    </form>
+    <br>
+    <br>
+    <br>
+    {{/each}}
+
+    {{!-- <h3 class="sub-heading egyptian">The Case of the Egyptian Archaeologist's Curse</h3>
 
     <img src="../public/img/egypt.png"
          alt="Small bust of an Egyptian pharaoh"
@@ -28,7 +48,7 @@
 
         <button type="submit"
                 class="btn float-right btnSubscribe"
-                id="btnSubmit">Subscribe</button>
+                id="btnSubmit">Subscribe</button> --}}
 
     </form>
 </div>

@@ -8,16 +8,23 @@
     <p class="body-title">You are currently working on: {{title}}</p>
 
     <p class="reg-body">We have new questions for you based on our most recent shipment of information and clues:</p>
-    <ol>
+    <ol id="eventList">
+        {{#each activeClues}}
 
-        <li>Event Item 1</li>
-        <li>Event Item 2</li>
-        <li>Event Item 3</li>
-        <li>Event Item 4</li>
-        <li>Event Item 5</li>
-        <li>Event Item 6</li>
-
+        <li>Event Item: <a href="/detective/image?image={{this.image}}"
+               class="viewImage">{{this.item}}</a></li>
+        {{/each}}
     </ol>
+    <p class="reg-body">Below you can access the questions we currently have for you. Remember that once you have
+        submitted your
+        answers, we'll do some more
+        research and send you the next set of clues, so you can only answer these questions once.</p>
+
+    <form action="/detective/questions">
+        <input type="submit"
+               class="submit"
+               value="I'm ready to answer questions!"></form>
+
 
     <div class="container">
     </div>

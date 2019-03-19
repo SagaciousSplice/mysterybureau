@@ -1,6 +1,8 @@
 module.exports = passport => {
     const router = require('express').Router();
     const { isDetective } = require('../helpers/auth');
+    const http = require('http');
+    const url = require('url');
 
     //Load Models
     require('../models/Customer');
@@ -26,6 +28,9 @@ module.exports = passport => {
         }),
         (req, res) => {
             req.session.orderDetails = req.user;
+            //set the session mystery
+            req.session.mystery = req.session.orderDetails.mystery;
+
             // console.log('user when detective logged in');
             // console.log(req.session.orderDetails);
             res.redirect('/detective/dashboard');
@@ -42,9 +47,10 @@ module.exports = passport => {
 
     //Render Detective Dashboard
     router.get('/dashboard', isDetective, (req, res) => {
-        console.log('render dashboard');
-        // console.log(req.session.orderDetails);
-        // let order = req.session.orderDetails;
+        //variable for passing events and clues and status
+        let activeEvents = [];
+        let activeClues = [];
+        let notYetEvents = [];
         Mystery.findById(req.session.orderDetails.mystery, (err, mystery) => {
             if (err) {
                 req.flash('an error occured');
@@ -53,27 +59,92 @@ module.exports = passport => {
                 req.flash('no mystery found');
                 res.render('/detective/login');
             }
-            res.render('detective/dashboard', mystery);
+            // console.log('in render dashboard');
+            //grab the events for the mystery
+            let events = mystery.events;
+            events.forEach(event => {
+                // console.log(event);
+                //if event is completed, mail, or started, pass to list of items
+                if (
+                    event.status == 'mail' ||
+                    event.status == 'started' ||
+                    event.status == 'finished'
+                ) {
+                    activeEvents.push(event);
+                    let clues = event.clues;
+                    clues.forEach(clue => {
+                        activeClues.push(clue);
+                    });
+                } else if (event.status == 'notYet') {
+                    notYetEvents.push(event);
+                }
+            });
+
+            res.render('detective/dashboard', {
+                mystery,
+                activeEvents,
+                activeClues
+            });
         });
-        // res.render('detective/dashboard');
     });
+
+    //Render Image
+    router.get('/image', (req, res) => {
+        console.log('in image render');
+        console.log(req.query.image);
+        let image = req.query.image;
+
+        res.render('detective/image', { image });
+    });
+
+    //Render Image pt2
 
     //Render Detective Dashboard
     router.get('/questions', isDetective, (req, res) => {
-        console.log('render dashboard');
-        // console.log(req.session.orderDetails);
-        // let order = req.session.orderDetails;
-        Mystery.findById(req.session.orderDetails.mystery, (err, mystery) => {
+        console.log('render questions');
+        console.log(req.session.mystery);
+        mysteryId = req.session.mystery;
+        Mystery.findById(mysteryId, (err, mystery) => {
             if (err) {
                 req.flash('an error occured');
-                res.render('/detective/login');
+                res.render('/detective/dashboard');
             } else if (!mystery) {
                 req.flash('no mystery found');
-                res.render('/detective/login');
+                res.render('/detective/dashboard');
+            } else {
+                let allEvents = mystery.events;
+                let pastEvents = [];
+                let currentEvent;
+                let futureEvents = [];
+
+                allEvents.forEach(event => {
+                    if (event.status == 'notYet') {
+                        futureEvents.push(event);
+                    } else if (
+                        event.status == 'mail' ||
+                        event.status == 'started'
+                    ) {
+                        currentEvent = event;
+                    } else if (event.status == 'finished') {
+                        pastEvents.push(event);
+                    }
+                });
+
+                // console.log('past');
+                // console.log(pastEvents);
+                console.log('current');
+                console.log(currentEvent);
+                // console.log('future');
+                // console.log(futureEvents);
+                let obj = currentEvent.questions;
+
+                obj.forEach(question => {
+                    console.log(question);
+                });
+
+                res.render('detective/questions', { currentEvent, mystery });
             }
-            res.render('detective/questions', mystery);
         });
-        // res.render('detective/dashboard');
     });
 
     return router;

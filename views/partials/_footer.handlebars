@@ -3,6 +3,12 @@
     $(document).ready(() => {
         console.log('jQuery ready');
 
+        $('#goBack').on('click', (e) => {
+            console.log('clicking back button made');
+            window.history.back();
+        });
+
+
         $('.nav-tabs a[href="#contactInfo]').tab('show');
 
         //form that holds shipping address
@@ -40,6 +46,20 @@
             $('.nav-tabs a[href="#reviewOrder"]').tab('show');
             window.scrollTo(0, 0);
         });
+
+        $('#eventList').on('click', (e) => {
+            console.log('imageclicked');
+            document.getElementById('imageModal').style.display = "block";
+        });
+
+        $('.imgClose').on('click', (e) => {
+            document.getElementById('imageModal').style.display = "none";
+        });
+
+
+        function goBack() {
+            window.history.back();
+        }
 
         //function createEventDiv = () => {
         //    let $eventDivParent = document.createElement('div');
@@ -81,6 +101,8 @@
                 modal.style.display = "none";
             }
         }
+
+
 
 
 

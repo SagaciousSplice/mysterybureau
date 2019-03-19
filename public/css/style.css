@@ -9076,10 +9076,12 @@
       color: var(--off-white);
   }
 
-  #btnSubmit {
+  .submit {
       background-color: var(--logo-red);
       color: var(--off-white);
       border: none;
+      margin-left: 55px;
+      border-radius: 8px;
   }
 
   .page-header {
@@ -9140,7 +9142,7 @@
       color: var(--off-white);
   }
 
-  .egyptian {
+  .mystery-title {
       font-family: 'Marcellus SC', serif;
   }
 
@@ -9367,5 +9369,25 @@
 .body-title{
     font-size: 300%;
 }
+
+.body-subtitle {
+    font-size: 150%;
+}
+
+.document-size  {
+    width: 100%;
+}
+
+.question-card{
+    height: 200px;
+    font-size: 25px;
+}
+
+.question-answer {
+    width: 100%;
+    height: 80%;
+}
+
+
 
   

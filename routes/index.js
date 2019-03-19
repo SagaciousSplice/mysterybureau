@@ -4,6 +4,9 @@ module.exports = (app, passport) => {
     let Haikunator = require('haikunator');
     let generatePassword = require('password-generator');
 
+    //models
+    let Mystery = require('../models/Mystery');
+
     //use routes
     app.use('/customer', require('./customer')(passport));
     app.use('/subscribe', require('./subscribe')(passport));
@@ -29,12 +32,31 @@ module.exports = (app, passport) => {
 
     //Current Mysteries
     app.get('/mysteries', (req, res) => {
-        const title = '';
-        res.render('mysteries', {
-            title: title,
-            message: req.flash('loginMessage')
+        Mystery.find({}, (err, mysteries) => {
+            if (err) {
+                req.flash('error_msg', 'error retrieving mystery list');
+                res.render('mysteries');
+            } else if (!mysteries) {
+                req.flash('error_msg', 'no mysteries to be found');
+                res.render('mysteries');
+            }
+            // mysteries.forEach(mystery => {
+            //     console.log('mystery');
+            //     console.log(mystery);
+            //     console.log('mystery image link');
+            //     console.log(mystery.image);
+            // });
+            const title = '';
+            res.render('mysteries', { mysteries, title: title });
         });
     });
+    // app.get('/mysteries', (req, res) => {
+    //     const title = '';
+    //     res.render('mysteries', {
+    //         title: title,
+    //         message: req.flash('loginMessage')
+    //     });
+    // });
 
     // Login Customer Form
     app.get('/login', (req, res) => {

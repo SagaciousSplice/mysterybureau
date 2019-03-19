@@ -5,20 +5,42 @@
 
 <div class="container">
 
-    <p class="body-title">Your questions for: {{title}} {{eventNumber}}</p>
+    <p class="body-subtitle">Your questions for: {{mystery.title}}, Clue Pack {{currentEvent.eventNumber}}</p>
 
     <p class="reg-body">We have new questions for you based on our most recent shipment of information and clues:</p>
-    <ol>
 
-        <li>Question 1</li>
-        <li>Question 2</li>
-        <li>Question 3</li>
-        <li>Question 4</li>
-        <li>Question 5</li>
-        <li>Question 6</li>
+    {{#each currentEvent.questions}}
 
+    <div class="card">
+        <div class="card-body question-card">
+            <p>{{this.question}}</p>
+            <textarea class="question-answer"></textarea>
+        </div>
+    </div>
+
+    {{/each}}
     </ol>
-
     <div class="container">
+        <form action="">
+            <form class="form-group"
+                  action="/detective/submitAnswers?_method=PUT"
+                  method="post">
+                <input type="hidden"
+                       name="_method"
+                       value="PUT">
+
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit"
+                                class="btn btn-primary float-left"
+                                id="btnBackDash">Back</button>
+
+
+                        <button type="submit"
+                                class="btn btn-next float-right"
+                                id="btnSubmitAnswers">Submit Answers</button>
+                    </div>
+                </div>
+            </form>
     </div>
 </div>
