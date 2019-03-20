@@ -85,6 +85,8 @@ module.exports = passport => {
         let mystery = req.session.mystery;
         let user = req.user;
         let total = mystery.price + mystery.tax;
+        let numEvents = mystery.events.length;
+        console.log(numEvents);
 
         //make the order in here, and log the order number to the session
 
@@ -96,7 +98,7 @@ module.exports = passport => {
         });
         let secretCode = generatePassword();
 
-        console.log(secretCode, secretName);
+        // console.log(secretCode, secretName);
 
         Order.findOne({ secretCode: secretCode }, function(err, order) {
             // if there are any errors, return the error
@@ -128,6 +130,7 @@ module.exports = passport => {
                 newOrder.customer = user;
                 newOrder.secretName = secretName;
                 newOrder.secretCode = secretCode;
+                newOrder.numberEvents = numEvents;
                 // save the customer
                 newOrder.save(function(err) {
                     if (err) throw err;
@@ -176,7 +179,7 @@ module.exports = passport => {
     });
 
     //Update Shipping processing
-    router.put('/updateShipping', (req, res) => {
+    router.put('/updateShipping', ensureAuthenticated, (req, res) => {
         console.log('in updateShipping');
         console.log(req.body);
         res.redirect('/subscribe/order');

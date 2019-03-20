@@ -411,95 +411,95 @@
 
             <div class="row">
                 <div class="col-4">
-                    {{!-- <div class="float-right"> --}}
-                    <!-- START side panels -->
+                    <div class="float-right">
+                        <!-- START side panels -->
 
-                    <div class="card mini-title"
-                         id="firstTitleCard"
-                         style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">The Mystery</h5>
+                        <div class="card mini-title"
+                             id="firstTitleCard"
+                             style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">The Mystery</h5>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card mini-info"
-                         style="width: 18rem;">
-                        <div class="card-body">
-                            <p class="card-text">{{mystery.title}}
-                            </p>
-                            <a href="/mysteries"
-                               class="btn btnChangeOrder">Change Mystery</a>
+                        <div class="card mini-info"
+                             style="width: 18rem;">
+                            <div class="card-body">
+                                <p class="card-text">{{mystery.title}}
+                                </p>
+                                <a href="/mysteries"
+                                   class="btn btnChangeOrder">Change Mystery</a>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card mini-title"
-                         style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Billing Address</h5>
+                        <div class="card mini-title"
+                             style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Billing Address</h5>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card mini-info"
-                         style="width: 18rem;">
-                        <div class="card-body">
-                            <p class="card-text">
-                                {{user.firstName}} {{user.lastName}}
-                                <br>
-                                {{user.address1}}
-                                <br>
-                                {{#if user.address2}}
-                                {{user.address2}}
-                                <br>
-                                {{/if}}
-                                {{user.city}}, {{user.provState}}
-                                <br>
-                                {{user.country}}
-                                <br>
-                                {{user.postalZip}}
-                            </p>
+                        <div class="card mini-info"
+                             style="width: 18rem;">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    {{user.firstName}} {{user.lastName}}
+                                    <br>
+                                    {{user.address1}}
+                                    <br>
+                                    {{#if user.address2}}
+                                    {{user.address2}}
+                                    <br>
+                                    {{/if}}
+                                    {{user.city}}, {{user.provState}}
+                                    <br>
+                                    {{user.country}}
+                                    <br>
+                                    {{user.postalZip}}
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card mini-title"
-                         style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Shipping Address</h5>
+                        <div class="card mini-title"
+                             style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Shipping Address</h5>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card mini-info"
-                         style="width: 18rem;">
-                        <div class="card-body">
-                            <p class="card-text">{{mystery.title}}
-                            </p>
+                        <div class="card mini-info"
+                             style="width: 18rem;">
+                            <div class="card-body">
+                                <p class="card-text">{{mystery.title}}
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card mini-title"
-                         style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Order Total</h5>
+                        <div class="card mini-title"
+                             style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Order Total</h5>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card mini-info"
-                         style="width: 18rem;">
-                        <div class="card-body">
-                            <p class="card-text">{{newOrder.id}}</p>
-                            <p class="card-text">{{newOrder.secretName}}</p>
-                            <p class="card-text">{{newOrder.secretCode}}</p>
-                            <p class="card-text">{{mystery.title}}
-                            </p>
-                            <a href="#"
-                               class="btn btnCheckout"
-                               id="btnCheckout">Checkout</a>
+                        <div class="card mini-info"
+                             style="width: 18rem;">
+                            <div class="card-body">
+                                <p class="card-text">{{newOrder.id}}</p>
+                                <p class="card-text">{{newOrder.secretName}}</p>
+                                <p class="card-text">{{newOrder.secretCode}}</p>
+                                <p class="card-text">{{mystery.title}}
+                                </p>
+                                <a href="#"
+                                   class="btn btnCheckout"
+                                   id="btnCheckout">Checkout</a>
+                            </div>
                         </div>
-                    </div>
 
 
-                    <!-- END side panels -->
+                        <!-- END side panels -->
 
-                    {{!-- </div><!-- float-right --> --}}
+                    </div><!-- float-right -->
                 </div><!-- col 4 -->
             </div><!-- row -->
 

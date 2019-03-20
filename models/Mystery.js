@@ -50,15 +50,10 @@ let MysterySchema = new mongoose.Schema({
                     question: {
                         type: String,
                         required: true
-                    }
+                    },
+                    answer: { type: String }
                 }
-            ],
-            //Status can be: notYet (1-event not begun), mailed (2-event mailed out), started (3-logged in to event), or finished (4-event questions submitted)
-            status: {
-                type: String,
-                required: true,
-                default: 'notYet'
-            }
+            ]
         }
     ],
     image: {

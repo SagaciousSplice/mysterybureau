@@ -30,6 +30,13 @@ function hbsHelpers(exphbs) {
                 } else {
                     return false;
                 }
+            },
+            activeMystery: orderDetails => {
+                if (orderDetails.currentEvent <= orderDetails.numberEvents) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         },
         defaultLayout: 'layout'

@@ -47,49 +47,67 @@ module.exports = passport => {
 
     //Render Detective Dashboard
     router.get('/dashboard', isDetective, (req, res) => {
+        console.log('in dashboard');
+        console.log(req.session.orderDetails);
+        if (
+            req.session.orderDetails.currentEvent >
+            req.session.orderDetails.numberEvents
+        ) {
+            console.log('The mystery is over');
+
+            //update order with mysteryCompleted = true;
+        }
         //variable for passing events and clues and status
-        let activeEvents = [];
-        let activeClues = [];
-        let notYetEvents = [];
-        Mystery.findById(req.session.orderDetails.mystery, (err, mystery) => {
+        let clues = [];
+
+        Order.findById(req.session.orderDetails._id, (err, order) => {
             if (err) {
                 req.flash('an error occured');
                 res.render('/detective/login');
-            } else if (!mystery) {
-                req.flash('no mystery found');
+            } else if (!order) {
+                req.flash('no mystery for that agent found');
                 res.render('/detective/login');
             }
-            // console.log('in render dashboard');
-            //grab the events for the mystery
-            let events = mystery.events;
-            events.forEach(event => {
-                // console.log(event);
-                //if event is completed, mail, or started, pass to list of items
-                if (
-                    event.status == 'mail' ||
-                    event.status == 'started' ||
-                    event.status == 'finished'
-                ) {
-                    activeEvents.push(event);
-                    let clues = event.clues;
-                    clues.forEach(clue => {
-                        activeClues.push(clue);
-                    });
-                } else if (event.status == 'notYet') {
-                    notYetEvents.push(event);
-                }
-            });
 
-            res.render('detective/dashboard', {
-                mystery,
-                activeEvents,
-                activeClues
+            //get the current set of questions from mystery
+            let mysteryId = req.session.orderDetails.mystery;
+            // console.log(mysteryId);
+
+            Mystery.findById(mysteryId, (err, mystery) => {
+                console.log('get events');
+                // console.log(mystery);
+                let events = mystery.events;
+                // console.log(events);
+                wantedEvent = events.filter(
+                    obj =>
+                        obj.eventNumber <= req.session.orderDetails.currentEvent
+                );
+                console.log(wantedEvent);
+
+                //get the questions from the event:
+                let currentEvent = wantedEvent;
+                currentEvent.forEach(events => {
+                    console.log('in foreach');
+                    // console.log(events);
+                    events.clues.forEach(clue => {
+                        clues.push(clue);
+                    });
+                });
+                // clues = currentEvent.clues;
+                req.session.currentEvent = currentEvent;
+                console.log(clues);
+
+                res.render('detective/dashboard', {
+                    mystery,
+                    currentEvent,
+                    clues
+                });
             });
         });
     });
 
     //Render Image
-    router.get('/image', (req, res) => {
+    router.get('/image', isDetective, (req, res) => {
         console.log('in image render');
         console.log(req.query.image);
         let image = req.query.image;
@@ -97,54 +115,118 @@ module.exports = passport => {
         res.render('detective/image', { image });
     });
 
-    //Render Image pt2
-
     //Render Detective Dashboard
     router.get('/questions', isDetective, (req, res) => {
         console.log('render questions');
-        console.log(req.session.mystery);
-        mysteryId = req.session.mystery;
-        Mystery.findById(mysteryId, (err, mystery) => {
+        let wantedEvent;
+        let questionArray;
+        // console.log(req.session.mystery);
+        orderId = req.session.orderDetails._id;
+        currentEvent = req.session.currentEvent;
+        // console.log(orderId);
+        Order.findById(orderId, (err, order) => {
+            console.log(order);
             if (err) {
                 req.flash('an error occured');
-                res.render('/detective/dashboard');
-            } else if (!mystery) {
-                req.flash('no mystery found');
-                res.render('/detective/dashboard');
+                res.render('detective/dashboard');
+            } else if (!order) {
+                req.flash('no order found');
+                res.render('detective/dashboard');
+            } else if (currentEvent > order.numberEvents) {
+                req.flash('no more questions for you!');
+                res.render('detective/dashboard');
             } else {
-                let allEvents = mystery.events;
-                let pastEvents = [];
-                let currentEvent;
-                let futureEvents = [];
-
-                allEvents.forEach(event => {
-                    if (event.status == 'notYet') {
-                        futureEvents.push(event);
-                    } else if (
-                        event.status == 'mail' ||
-                        event.status == 'started'
-                    ) {
-                        currentEvent = event;
-                    } else if (event.status == 'finished') {
-                        pastEvents.push(event);
-                    }
-                });
-
-                // console.log('past');
-                // console.log(pastEvents);
-                console.log('current');
+                //get currentEvent (updated last time in, or default to 1)
+                let currentEvent = order.currentEvent;
                 console.log(currentEvent);
-                // console.log('future');
-                // console.log(futureEvents);
-                let obj = currentEvent.questions;
 
-                obj.forEach(question => {
-                    console.log(question);
+                //get the current set of questions from mystery
+                let mysteryId = req.session.orderDetails.mystery;
+                // console.log(mysteryId);
+
+                //check if mystery is over
+
+                Mystery.findById(mysteryId, (err, mystery) => {
+                    console.log('get events');
+                    // console.log(mystery);
+                    let events = mystery.events;
+                    // console.log(events);
+                    wantedEvent = events.filter(
+                        obj => obj.eventNumber == currentEvent
+                    );
+                    console.log(wantedEvent);
+
+                    //get the questions from the event:
+                    currentEvent = wantedEvent[0];
+                    questionArray = currentEvent.questions;
+                    req.session.currentEvent = currentEvent;
+                    console.log(questionArray);
+
+                    res.render('detective/questions', {
+                        mystery,
+                        currentEvent,
+                        questionArray
+                    });
                 });
-
-                res.render('detective/questions', { currentEvent, mystery });
             }
         });
+    });
+
+    //Process Answer Submission
+    router.put('/answered', isDetective, (req, res) => {
+        console.log('in answered');
+        console.log('check order details');
+        console.log(req.session.orderDetails);
+
+        //create vars to hold quesions and answers for updating order
+        let newQuestions = [];
+        let newAnswers = [];
+
+        //grab the questions to be added
+        req.session.currentEvent.questions.forEach(question => {
+            newQuestions.push(question.question);
+        });
+
+        //grab the answers to those questions in order
+        for (i = 0; i < req.session.currentEvent.questions.length; i++) {
+            let name = 'answer' + i;
+            newAnswers.push(req.body[name]);
+        }
+
+        let id = req.session.orderDetails._id;
+        console.log('id for update');
+        console.log(id);
+
+        //update the order by id with the questions and answers given
+        Order.findOne({ _id: id }).exec((err, order) => {
+            //now past event number
+            let previousEvent = req.session.currentEvent.eventNumber;
+            r;
+            //now current event number
+            let currentEvent = req.session.currentEvent.eventNumber + 1;
+            //now next event number
+            let nextEvent = currentEvent + 1;
+            // console.log(order.answers);
+            order.answers.push(newAnswers);
+            order.questions.push(newQuestions);
+            order.previousEvent = previousEvent;
+            order.currentEvent = currentEvent;
+            order.nextEvent = nextEvent + 1;
+            order.save(err => {
+                if (err) {
+                    console.log('error saving order answers and questions');
+                    return err;
+                }
+                console.log('successful q&a update');
+            });
+        });
+
+        //need to update current event
+
+        console.log('after answered update');
+        console.log(req.session.orderDetails);
+
+        res.render('detective/answered');
     });
 
     return router;

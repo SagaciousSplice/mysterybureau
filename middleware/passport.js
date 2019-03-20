@@ -234,9 +234,9 @@ module.exports = function(passport) {
             },
             function(req, secretName, secretCode, done) {
                 // callback with email and password from our form
-                console.log('in detective passport: ');
-                console.log(secretName);
-                console.log(secretCode);
+                // console.log('in detective passport: ');
+                // console.log(secretName);
+                // console.log(secretCode);
 
                 // find a customer whose email is the same as the forms email
                 // we are checking to see if the customer trying to login already exists

@@ -75,14 +75,35 @@ let OrderSchema = new mongoose.Schema({
     orderComplete: {
         type: Boolean,
         default: false
+    },
+    numberEvents: { type: Number, status: String },
+    previousEvent: { type: Number, status: String },
+    currentEvent: {
+        type: Number,
+        default: 1,
+        status: String
+    },
+    nextEvent: { type: Number, status: String },
+    questions: [
+        {
+            type: String
+        }
+    ],
+    answers: [
+        {
+            type: String
+        }
+    ],
+    mysteryCompleted: {
+        type: Boolean,
+        default: false
     }
+
     //going to need to add a lot of data here
 });
 
 // checking if password is valid
 OrderSchema.methods.validSecretCode = (order, secretName, secretCode) => {
-    console.log('passed secretCode: ' + secretCode);
-    console.log('local secretCode: ' + order.secretCode);
     return secretCode === order.secretCode && secretName === order.secretName;
 };
 

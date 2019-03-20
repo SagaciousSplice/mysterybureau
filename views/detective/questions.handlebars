@@ -9,38 +9,42 @@
 
     <p class="reg-body">We have new questions for you based on our most recent shipment of information and clues:</p>
 
-    {{#each currentEvent.questions}}
-
-    <div class="card">
-        <div class="card-body question-card">
-            <p>{{this.question}}</p>
-            <textarea class="question-answer"></textarea>
-        </div>
-    </div>
-
-    {{/each}}
-    </ol>
     <div class="container">
-        <form action="">
-            <form class="form-group"
-                  action="/detective/submitAnswers?_method=PUT"
-                  method="post">
-                <input type="hidden"
-                       name="_method"
-                       value="PUT">
 
-                <div class="row">
-                    <div class="col-12">
-                        <button type="submit"
-                                class="btn btn-primary float-left"
-                                id="btnBackDash">Back</button>
+        <form class="form-group"
+              action="/detective/answered?_method=PUT"
+              method="post">
+            <input type="hidden"
+                   name="_method"
+                   value="PUT">
 
+            {{#each questionArray}}
 
-                        <button type="submit"
-                                class="btn btn-next float-right"
-                                id="btnSubmitAnswers">Submit Answers</button>
-                    </div>
+            <div class="card">
+                <div class="card-body question-card">
+                    <label for="answer{{@index}}">{{this.question}}</label>
+                    <textarea class="question-answer"
+                              name="answer{{@index}}"></textarea>
                 </div>
-            </form>
+            </div>
+
+            {{/each}}
+
+            <br>
+
+            <div class="row">
+                <div class="col-12">
+                    <button type="button"
+                            class="btn submit btn-primary float-left"
+                            id="btnBackDash">Back</button>
+
+
+                    <button type="submit"
+                            class="btn submit btn-next float-right"
+                            id="btnSubmitAnswers">Submit Answers</button>
+                </div>
+            </div>
+
+        </form>
     </div>
 </div>

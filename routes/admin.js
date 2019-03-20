@@ -81,7 +81,7 @@ module.exports = passport => {
     });
 
     //Process Add Admin User Form
-    router.post('/addAdmin', (req, res) => {
+    router.post('/addAdmin', ensureAuthenticated, isAdmin, (req, res) => {
         let email = req.body.email;
         let password = req.body.password;
         let firstName = req.body.firstName;

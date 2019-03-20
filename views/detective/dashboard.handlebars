@@ -5,16 +5,18 @@
 
 <div class="container">
 
-    <p class="body-title">You are currently working on: {{title}}</p>
+    <p class="body-title">You are currently working on: {{mystery.title}}</p>
 
     <p class="reg-body">We have new questions for you based on our most recent shipment of information and clues:</p>
     <ol id="eventList">
-        {{#each activeClues}}
+        {{#each clues}}
 
         <li>Event Item: <a href="/detective/image?image={{this.image}}"
                class="viewImage">{{this.item}}</a></li>
         {{/each}}
     </ol>
+
+    {{#if (activeMystery req.session.orderDetails)}}
     <p class="reg-body">Below you can access the questions we currently have for you. Remember that once you have
         submitted your
         answers, we'll do some more
@@ -24,6 +26,10 @@
         <input type="submit"
                class="submit"
                value="I'm ready to answer questions!"></form>
+
+    {{else}}
+    <p class="reg-body">You have completed your mystery. GOOD JOB!</p>
+    {{/if}}
 
 
     <div class="container">
