@@ -32,7 +32,7 @@ function hbsHelpers(exphbs) {
                 }
             },
             activeMystery: orderDetails => {
-                if (orderDetails.currentEvent <= orderDetails.numberEvents) {
+                if (orderDetails.currentEvent < orderDetails.numberEvents) {
                     return true;
                 } else {
                     return false;

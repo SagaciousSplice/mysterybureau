@@ -48,13 +48,12 @@ module.exports = passport => {
     //Render Detective Dashboard
     router.get('/dashboard', isDetective, (req, res) => {
         console.log('in dashboard');
-        console.log(req.session.orderDetails);
+        // console.log(req.session.orderDetails);
         if (
             req.session.orderDetails.currentEvent >
             req.session.orderDetails.numberEvents
         ) {
-            console.log('The mystery is over');
-
+            // console.log('The mystery is over');
             //update order with mysteryCompleted = true;
         }
         //variable for passing events and clues and status
@@ -74,7 +73,7 @@ module.exports = passport => {
             // console.log(mysteryId);
 
             Mystery.findById(mysteryId, (err, mystery) => {
-                console.log('get events');
+                // console.log('get events');
                 // console.log(mystery);
                 let events = mystery.events;
                 // console.log(events);
@@ -82,12 +81,12 @@ module.exports = passport => {
                     obj =>
                         obj.eventNumber <= req.session.orderDetails.currentEvent
                 );
-                console.log(wantedEvent);
+                // console.log(wantedEvent);
 
                 //get the questions from the event:
                 let currentEvent = wantedEvent;
                 currentEvent.forEach(events => {
-                    console.log('in foreach');
+                    // console.log('in foreach');
                     // console.log(events);
                     events.clues.forEach(clue => {
                         clues.push(clue);
@@ -95,11 +94,13 @@ module.exports = passport => {
                 });
                 // clues = currentEvent.clues;
                 req.session.currentEvent = currentEvent;
-                console.log(clues);
+                let eventNumber = currentEvent[0].event;
+                // console.log(currentEvent[0].event);
 
                 res.render('detective/dashboard', {
                     mystery,
                     currentEvent,
+                    eventNumber,
                     clues
                 });
             });
@@ -125,7 +126,7 @@ module.exports = passport => {
         currentEvent = req.session.currentEvent;
         // console.log(orderId);
         Order.findById(orderId, (err, order) => {
-            console.log(order);
+            // console.log(order);
             if (err) {
                 req.flash('an error occured');
                 res.render('detective/dashboard');
@@ -160,7 +161,7 @@ module.exports = passport => {
                     currentEvent = wantedEvent[0];
                     questionArray = currentEvent.questions;
                     req.session.currentEvent = currentEvent;
-                    console.log(questionArray);
+                    // console.log(currentEvent);
 
                     res.render('detective/questions', {
                         mystery,
@@ -201,7 +202,7 @@ module.exports = passport => {
         Order.findOne({ _id: id }).exec((err, order) => {
             //now past event number
             let previousEvent = req.session.currentEvent.eventNumber;
-            r;
+
             //now current event number
             let currentEvent = req.session.currentEvent.eventNumber + 1;
             //now next event number
@@ -217,16 +218,16 @@ module.exports = passport => {
                     console.log('error saving order answers and questions');
                     return err;
                 }
+
                 console.log('successful q&a update');
+                console.log('after answered update');
+                console.log(order);
+                req.session.orderDetails = order;
+                res.render('detective/answered');
             });
         });
 
         //need to update current event
-
-        console.log('after answered update');
-        console.log(req.session.orderDetails);
-
-        res.render('detective/answered');
     });
 
     return router;

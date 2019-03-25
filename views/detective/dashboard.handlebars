@@ -5,9 +5,18 @@
 
 <div class="container">
 
+    {{#if (activeMystery req.session.orderDetails)}}
+
     <p class="body-title">You are currently working on: {{mystery.title}}</p>
 
     <p class="reg-body">We have new questions for you based on our most recent shipment of information and clues:</p>
+
+    {{else}}
+    <p class="body-title">You have completed your mystery. GOOD JOB!</p>
+    {{/if}}
+
+    {{!-- {{eventNumber}} --}}
+
     <ol id="eventList">
         {{#each clues}}
 
@@ -28,7 +37,7 @@
                value="I'm ready to answer questions!"></form>
 
     {{else}}
-    <p class="reg-body">You have completed your mystery. GOOD JOB!</p>
+    <p class="reg-body">Feel free to look around the artifacts.</p>
     {{/if}}
 
 
